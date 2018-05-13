@@ -1,0 +1,51 @@
+<html>
+<head>
+  <title>കാലന്‍ ഇപ്സം</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+  <style type="text/css">
+    body{
+      padding: 50px 0;
+      background: #F6F6F6;
+    }
+    h2{
+      font-weight: bold;
+    }
+    textarea{
+      margin: 20px 0;
+      min-height: 200px;
+    }
+    .btn{
+      float: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>കാലന്‍ ഇപ്സം</h2>
+    <form action="generate" method="POST" id="mainform">
+      <div class="input-group">
+        <textarea class="form-control" aria-label="" name="puretext" placeholder="Enter some malayalam sentance"></textarea>
+      </div>
+      <br/>
+      <input class="btn" type="submit" value="Generate Ipsum">
+    </form>
+    <br/>
+    <textarea class="form-control" id="resut" aria-label="" name="pure-text" placeholder="കാലന്‍ ഇപ്സം വില്‍ കം ഹേര്‍" style="display:none;"></textarea>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script>
+  $(document).ready(function(){
+
+      $('#mainform').on("submit",function(){
+        $.post( "generate", $(this).serialize()).done(
+          function(data){
+            $("#resut").val(data).slideDown();
+          });
+        return false;
+      });
+  });
+  </script>
+
+</body>
+</html>
